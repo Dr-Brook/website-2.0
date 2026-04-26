@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Brook S. Eshete, MD, MPH — Public Health Data Analyst",
+  title: "Brook Eshete, MD, MPH — Public Health Data Analyst",
   description:
     "Public health data analyst and MD/MPH graduate from Johns Hopkins specializing in program evaluation, health informatics, STATA, Python, SQL, and Power BI. Based in Silver Spring, MD — open to opportunities in the DMV area.",
   keywords: [
