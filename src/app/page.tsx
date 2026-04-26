@@ -47,6 +47,7 @@ export default function HomePage() {
             <a href="#experience" className="hover:text-slate-950">Experience</a>
             <a href="#projects" className="hover:text-slate-950">Projects</a>
             <a href="#contact" className="hover:text-slate-950">Contact</a>
+            <a href="/blog" className="hover:text-slate-950">Blog</a>
           </nav>
         </div>
       </header>
@@ -59,9 +60,9 @@ export default function HomePage() {
               <div className="inline-flex items-center rounded-full border border-slate-200 px-3 py-1 text-xs font-medium text-slate-600 mb-5">
                 {content.profile.badge}
               </div>
-              <h2 className="text-4xl md:text-5xl font-semibold tracking-tight leading-tight">
+              <h1 className="text-4xl md:text-5xl font-semibold tracking-tight leading-tight">
                 {content.profile.heroTitle}
-              </h2>
+              </h1>
               <p className="mt-6 text-lg text-slate-600 leading-8 max-w-2xl">
                 {content.profile.heroDescription}
               </p>
@@ -262,9 +263,15 @@ export default function HomePage() {
                 </p>
               </div>
               <div className="space-y-4 text-sm md:text-base">
-                <p><span className="text-slate-400">Email:</span> {content.profile.email}</p>
-                <p><span className="text-slate-400">LinkedIn:</span> {content.profile.linkedin}</p>
-                <p><span className="text-slate-400">Base:</span> {content.profile.location}</p>
+                <p><span className="text-slate-400">Email:</span> <a href={`mailto:${content.profile.email}`} className="hover:underline">{content.profile.email}</a></p>
+                {content.profile.phone && <p><span className="text-slate-400">Phone:</span> {content.profile.phone}</p>}
+                <p><span className="text-slate-400">LinkedIn:</span> <a href={content.profile.linkedin} target="_blank" rel="noopener noreferrer" className="hover:underline">{content.profile.linkedin.replace("https://", "")}</a></p>
+                <p><span className="text-slate-400">Based in:</span> {content.profile.location}</p>
+              </div>
+              <div className="mt-6">
+                <a href={`mailto:${content.profile.email}`} className="inline-block rounded-2xl bg-white text-slate-900 px-6 py-3 text-sm font-medium hover:bg-slate-100 border border-slate-300">
+                  Currently open to opportunities in public health analytics, research, and evaluation.
+                </a>
               </div>
             </div>
           </div>
