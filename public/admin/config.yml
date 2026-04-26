@@ -1,0 +1,106 @@
+backend:
+  name: github
+  repo: Dr-Brook/itsbrook
+  branch: main
+  base_url: https://itsbrook.com
+
+media_folder: public/images
+public_folder: /images
+
+locale: en
+
+collections:
+  - name: pages
+    label: Pages
+    files:
+      - name: home
+        label: Homepage
+        file: content/pages/home.md
+        fields:
+          - { name: title, label: Title, widget: string }
+          - { name: hero_headline, label: Hero Headline, widget: string }
+          - { name: hero_subtitle, label: Hero Subtitle, widget: text }
+          - { name: about_text, label: About Text, widget: markdown }
+          - name: services
+            label: Services
+            widget: list
+            fields:
+              - { name: icon, label: Icon (emoji), widget: string }
+              - { name: title, label: Title, widget: string }
+              - { name: description, label: Description, widget: text }
+          - name: experience
+            label: Experience
+            widget: list
+            fields:
+              - { name: title, label: Job Title, widget: string }
+              - { name: org, label: Organization, widget: string }
+              - { name: period, label: Period, widget: string }
+              - name: bullets
+                label: Bullet Points
+                widget: list
+                field: { name: bullet, label: Bullet, widget: string }
+          - name: highlights
+            label: Recruiter Highlights
+            widget: list
+            field: { name: text, label: Highlight, widget: string }
+
+      - name: contact
+        label: Contact Info
+        file: content/pages/contact.md
+        fields:
+          - { name: email, label: Email, widget: string }
+          - { name: linkedin, label: LinkedIn URL, widget: string }
+          - { name: location, label: Location, widget: string }
+          - { name: phone, label: Phone, widget: string, required: false }
+
+  - name: blog
+    label: Blog Posts
+    folder: content/blog
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: date, label: Date, widget: datetime }
+      - { name: category, label: Category, widget: select, options: ["Data Analysis", "Career", "Personal", "Research", "Tools"] }
+      - { name: description, label: Meta Description, widget: text }
+      - { name: body, label: Content, widget: markdown }
+
+  - name: projects
+    label: Projects
+    folder: content/projects
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: description, label: Description, widget: text }
+      - name: tags
+        label: Tags
+        widget: list
+        field: { name: tag, label: Tag, widget: string }
+      - { name: color, label: Gradient Color, widget: select, options: ["from-blue-500 to-cyan-400", "from-purple-500 to-pink-400", "from-emerald-500 to-teal-400", "from-amber-500 to-orange-400", "from-red-500 to-rose-400", "from-indigo-500 to-violet-400"] }
+      - { name: link, label: Project URL, widget: string, required: false }
+
+  - name: skills
+    label: Skills
+    folder: content/skills
+    create: false
+    slug: "{{slug}}"
+    fields:
+      - { name: title, label: Group Name, widget: string }
+      - name: skills
+        label: Skills
+        widget: list
+        fields:
+          - { name: name, label: Skill Name, widget: string }
+          - { name: level, label: Proficiency (0-100), widget: number, value_type: int, min: 0, max: 100 }
+
+  - name: settings
+    label: Site Settings
+    files:
+      - name: general
+        label: General
+        file: content/settings/general.md
+        fields:
+          - { name: site_title, label: Site Title, widget: string }
+          - { name: site_description, label: Site Description, widget: text }
+          - { name: author, label: Author Name, widget: string }
